@@ -1,18 +1,25 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -Wpedantic -std=c99
-CTARGET=main
-SRCS=main.c psql.c
-OBJS=$(SRCS:.c=.o)
+UNAME:=$(shell uname)
+ifeq ($(UNAME), Darwin)
+	PATH_POSTGRESQL=-L/Library/PostgreSQL/14/lib/ -lpq
+else ifeq ($(UNAME), Linux)
+	PATH_POSTGRESQL=-I/usr/include/postgresql -L/usr/lib -lpq
+else
+	$(error Operative system not supported yet.)
+endif
 
-PATH_POSTGRESQL=-L/Library/PostgreSQL/14/lib/ -lpq
+CC=gcc
+CFLAGS=-Wall -Wextra -Wpedantic -std=c11
+TARGET=todo
+SRCS=src/main.c src/psql.c
+OBJS=$(SRCS:.c=.o)
 
 %.o: %.c
 	$(CC) $(CFLAGS) $< -c -o $@
 
 all: $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(CTARGET) $(PATH_POSTGRESQL)
+	$(CC) $(CFLAGS) $(OBJS) -o $(TARGET) $(PATH_POSTGRESQL)
 
 .PHONY: clean
 
 clean:
-	$(RM) $(CTARGET) $(OBJS)
+	$(RM) $(TARGET) $(OBJS)
