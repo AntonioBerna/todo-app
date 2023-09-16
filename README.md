@@ -34,13 +34,13 @@ The rest you can leave as it is!
 # Add tasks
 
 ```
-./main add homework "go to the toilet"
+./todo add homework "go to the toilet"
 ```
 
 # Print tasks
 
 ```
-./main list
+./todo list
 ```
 
 Output:
@@ -53,8 +53,8 @@ Output:
 # Delete tasks
 
 ```
-./main delete 1 2
-./main list
+./todo delete 1 2
+./todo list
 ```
 
 Output:
