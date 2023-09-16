@@ -31,11 +31,10 @@ The rest you can leave as it is!
 
 > **NOTE:** The PostgreSQL file path changes depending on the computer you use and depending on where you install it, so you should appropriately change the paths in the ```libpq-fe.h``` file and in the ```Makefile``` (to use the ```-lpq``` command during compilation).
 
-# Add task
+# Add tasks
 
 ```
-./main add homework
-./main add "go to the toilet"
+./main add homework "go to the toilet"
 ```
 
 # Print tasks
@@ -51,17 +50,17 @@ Output:
 2 - go to the toilet
 ```
 
-# Delete task
+# Delete tasks
 
 ```
-./main delete 1
+./main delete 1 2
 ./main list
 ```
 
 Output:
 
 ```
-1 - go to the toilet
+"Empty list!
 ```
 
 # TODO
