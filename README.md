@@ -37,6 +37,8 @@ The rest you can leave as it is!
 ./todo add homework "go to the toilet"
 ```
 
+> **NOTE:** Double quotes `" "` are optional for single words like coffee, chocolate, tea, ...
+
 # Print tasks
 
 ```
@@ -60,11 +62,12 @@ Output:
 Output:
 
 ```
-"Empty list!
+Empty list!
 ```
 
 # TODO
 
 - [ ] Fix the compatibilities between macOS and Linux
+- [ ] Change `argc` and `argv` with other variables to make the code more general
 - [ ] Add GUI (GTK?)
   - [ ] Add the icon to the executable
