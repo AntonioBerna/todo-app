@@ -64,7 +64,6 @@ void add_tasks(database_t *db, int argc, const char **argv) {
 
 void delete_tasks(database_t *db, int argc, const char **argv) {
     char query[BUFSIZ];
-    long id;
     long id_to_delete;
     PGresult *res;
 
@@ -75,7 +74,7 @@ void delete_tasks(database_t *db, int argc, const char **argv) {
     }
 
     for (int i = 2; i < argc; i++) {
-        id = strtol(argv[i], NULL, 0);
+        long id = strtol(argv[i], NULL, 0);
         snprintf(query, sizeof(query), "SELECT MIN(id) FROM tasks WHERE id >= %ld;", id);
 
         res = PQexec(conn, query);
@@ -119,8 +118,6 @@ void delete_tasks(database_t *db, int argc, const char **argv) {
 }
 
 void print_tasks(database_t *db) {
-    char *description;
-
     PGconn *conn = connect_to_database(db);
     if (conn == NULL) {
         perror("conn");
@@ -141,7 +138,7 @@ void print_tasks(database_t *db) {
     } else {
         printf("Todo list:\n");
         for (int i = 0; i < rows; i++) {
-            description = PQgetvalue(res, i, 1);
+            char *description = PQgetvalue(res, i, 1);
             printf("(%d) %s\n", i + 1, description);
         }
     }
