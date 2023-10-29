@@ -2,34 +2,42 @@
 
 # How to works?
 
-## On Linux
+## Linux
 If you have never used PostgreSQL on Linux I suggest you follow [this guide](https://wiki.archlinux.org/title/PostgreSQL).
 
-The first thing to do is to run the following command:
+Once you have installed PostgreSQL you will need to go to the `header/psql.h` configuration file to add the database access credentials, i.e. `DATABASE`, `USERNAME`, `PASSWORD` and `PORT`.
+
+Next you will need to use the following command:
 
 ```
-make
+sh build.sh
 ```
-
-Now go to the ```psql.h``` file and add your PostgreSQL database login credentials, namely DATABASE, USERNAME, PASSWORD and PORT.
 
 The rest you can leave as it is!
 
-## On macOS
-
-> **NOTE:** I need to find a PostgreSQL guide like the Linux one for macOS.
-
-The first thing to do is to run the following command:
+## macOS
+I'll start by saying that I'm sorry that for Apple users there is no documentation (as well done as that for Linux users) to install PostgreSQL on macOS.
+Anyway, using the [Homebrew](https://brew.sh/) suite to install PostgreSQL with the following command:
 
 ```
-make
+brew install postgresql@16
 ```
 
-Now go to the ```libpq-fe.h``` file and add your PostgreSQL database login credentials, namely DATABASE, USERNAME, PASSWORD and PORT.
+To verify correct installation we can use the following command:
+
+```
+psql postgres
+```
+
+which will allow us to access the default database called `postgresql`.
+
+> **NOTE:** Use the `\q` command to exit the `postgresql` database.
+
+As with Linux, once PostgreSQL is installed you will need to go to the `header/psql.h` configuration file to add the database login credentials, namely `DATABASE`, `USERNAME`, `PASSWORD` and `PORT`.
 
 The rest you can leave as it is!
 
-> **NOTE:** The PostgreSQL file path changes depending on the computer you use and depending on where you install it, so you should appropriately change the paths in the ```libpq-fe.h``` file and in the ```Makefile``` (to use the ```-lpq``` command during compilation).
+> **NOTE:** The PostgreSQL file path changes depending on the computer you use and depending on where you install it, so you should appropriately change the `PATH_POSTGRESQL` in the `CMakeLists.txt` and the path to reach the `libpq-fe.h` file (this last path must be modified appropriately by accessing the `header/psql.h` file).
 
 # Add tasks
 
@@ -67,7 +75,6 @@ Empty list!
 
 # TODO
 
-- [ ] Fix the compatibilities between macOS and Linux
 - [ ] Change `argc` and `argv` with other variables to make the code more general
 - [ ] Add GUI (GTK?)
   - [ ] Add the icon to the executable

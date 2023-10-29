@@ -57,3 +57,4 @@ dkms.conf
 .DS_Store
 todo
 icons/
+build/
