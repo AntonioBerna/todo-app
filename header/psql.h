@@ -1,7 +1,7 @@
 #pragma once
 
 #ifdef __APPLE__
-#include "/usr/local/Cellular/postgresql@16/16.0_1/include/libpq-fe.h"
+#include "/usr/local/Cellar/postgresql@16/16.0_1/include/libpq-fe.h"
 
 #define DATABASE "todolist"
 #define USERNAME "clevercode"

@@ -4,10 +4,10 @@ set -xe
 
 dir="build/"
 
-if [ ! -d "$dir" ]; then
-    mkdir "$dir"
+if [ -d "$dir" ]; then
+    rm -r "$dir"
 fi
 
-cd "$dir"
+mkdir "$dir" && cd "$dir"
 cmake ..
 make
