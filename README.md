@@ -29,7 +29,7 @@ To verify correct installation we can use the following command:
 psql postgres
 ```
 
-which will allow us to access the default database called `postgresql`.
+which will allow us to access the default database called `postgres`.
 
 > **NOTE:** Use the `\q` command to exit the `postgres` database.
 
