@@ -1,12 +1,12 @@
 #pragma once
 
 #ifdef __APPLE__
-#include "/Library/PostgreSQL/14/include/libpq-fe.h"
+#include "/usr/local/Cellular/postgresql@16/16.0_1/include/libpq-fe.h"
 
 #define DATABASE "todolist"
-#define USERNAME "postgres"
+#define USERNAME "clevercode"
 #define PASSWORD "ant0ni02"
-#define PORT "5433"
+#define PORT "5432" // SELECT setting FROM pg_settings WHERE name = 'port';
 #elif __linux__
 #include <libpq-fe.h>
 
