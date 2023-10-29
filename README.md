@@ -31,7 +31,7 @@ psql postgres
 
 which will allow us to access the default database called `postgresql`.
 
-> **NOTE:** Use the `\q` command to exit the `postgresql` database.
+> **NOTE:** Use the `\q` command to exit the `postgres` database.
 
 As with Linux, once PostgreSQL is installed you will need to go to the `header/psql.h` configuration file to add the database login credentials, namely `DATABASE`, `USERNAME`, `PASSWORD` and `PORT`.
 
