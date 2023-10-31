@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.26)
 project(todo-app C)
 
 set(CMAKE_C_STANDARD 11)
@@ -21,3 +21,5 @@ endif()
 
 add_executable(todo src/main.c src/psql.c)
 target_link_libraries(todo ${PATH_POSTGRESQL})
+
+target_include_directories(todo PRIVATE header)

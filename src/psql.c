@@ -1,4 +1,4 @@
-#include "../header/psql.h"
+#include "psql.h"
 
 void create_database(database_t *db, const char *port, const char *name, const char *username, const char *password) {
     assert(db != NULL);
