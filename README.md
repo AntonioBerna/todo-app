@@ -76,5 +76,5 @@ Empty list!
 # TODO
 
 - [ ] Change `argc` and `argv` with other variables to make the code more general
-- [ ] Add GUI (GTK?)
-  - [ ] Add the icon to the executable
+- [ ] Add the icon to the executable
+- [ ] Crete a `Docker` image
