@@ -77,4 +77,4 @@ Empty list!
 
 - [ ] Change `argc` and `argv` with other variables to make the code more general
 - [ ] Add the icon to the executable
-- [ ] Crete a `Docker` image
+- [ ] Create a `Docker` image
