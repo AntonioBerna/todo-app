@@ -58,7 +58,7 @@ void add_tasks(database_t *db) {
     PQfinish(conn);
 }
 
-void delete_tasks(database_t *db) {
+void remove_tasks(database_t *db) {
     char query[BUFSIZ];
     long id_to_delete;
     PGresult *res;

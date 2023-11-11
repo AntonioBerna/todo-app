@@ -18,7 +18,7 @@ int main(int argc, const char **argv) {
     if (!strcmp(argv[1], "add")) {
         add_tasks(&db);
     } else if (!strcmp(argv[1], "rm")) {
-        delete_tasks(&db);
+        remove_tasks(&db);
     } else if (!strcmp(argv[1], "ls") && argc == 2) {
         print_tasks(&db);
     } else {

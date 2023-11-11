@@ -33,5 +33,5 @@ typedef struct {
 void create_database(database_t *db, const char *port, const char *name, const char *username, const char *password);
 PGconn *connect_to_database(database_t *db);
 void add_tasks(database_t *db);
-void delete_tasks(database_t *db);
+void remove_tasks(database_t *db);
 void print_tasks(database_t *db);
