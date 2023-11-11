@@ -58,3 +58,4 @@ dkms.conf
 todo
 icons/
 cmake-build-debug/
+debug/

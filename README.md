@@ -1,6 +1,6 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b48b5e6f59c2480ca44b13dc35da8f1e)](https://www.codacy.com/gh/AntonioBerna/todo-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AntonioBerna/todo-app&amp;utm_campaign=Badge_Grade)
 
-# How to works?
+# Mini Docs
 
 ## Linux
 If you have never used PostgreSQL on Linux I suggest you follow [this guide](https://wiki.archlinux.org/title/PostgreSQL).
@@ -50,7 +50,7 @@ The rest you can leave as it is!
 # Print tasks
 
 ```
-./todo list
+./todo ls
 ```
 
 Output:
@@ -63,8 +63,8 @@ Output:
 # Delete tasks
 
 ```
-./todo delete 1 2
-./todo list
+./todo rm 1 2
+./todo ls
 ```
 
 Output:
@@ -75,6 +75,5 @@ Empty list!
 
 # TODO
 
-- [ ] Change `argc` and `argv` with other variables to make the code more general
 - [ ] Add the icon to the executable
 - [ ] Create a `Docker` image

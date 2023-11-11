@@ -17,9 +17,8 @@ PGconn *connect_to_database(database_t *db) {
     return conn;
 }
 
-void add_tasks(database_t *db, int argc, const char **argv) {
+void add_tasks(database_t *db) {
     char query[BUFSIZ];
-    char *endptr;
 
     PGconn *conn = connect_to_database(db);
     if (conn == NULL) {
@@ -27,27 +26,24 @@ void add_tasks(database_t *db, int argc, const char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    for (int k = 2; k < argc; k++) {
-        long min_id = 1;
-        PGresult *res = PQexec(conn, "SELECT * FROM tasks;");
-        if (PQresultStatus(res) == PGRES_TUPLES_OK) {
-            int rows = PQntuples(res);
-            for (int i = 0; i < rows; i++) {
-                long id = strtol(PQgetvalue(res, i, 0), &endptr, 0);
-                if (*endptr != '\0' || errno == ERANGE) {
-                    perror("strtol");
-                    exit(EXIT_FAILURE);
-                }
-                if (id == min_id) {
-                    min_id++;
-                } else {
-                    break;
-                }
-            }
+    for (int k = 2; k < db->no_tasks; k++) {
+        PGresult *res = PQexec(conn, "SELECT MAX(id) FROM tasks;");
+        if (PQresultStatus(res) != PGRES_TUPLES_OK) {
+            fprintf(stderr, "Error fetching max ID: %s\n", PQerrorMessage(conn));
+            PQclear(res);
+            PQfinish(conn);
+            exit(EXIT_FAILURE);
+        }
+
+        long max_id = strtol(PQgetvalue(res, 0, 0), NULL, 0);
+        if (errno == ERANGE) {
+            perror("strtol");
+            exit(EXIT_FAILURE);
         }
         PQclear(res);
 
-        sprintf(query, "INSERT INTO tasks (id, description) VALUES (%ld, '%s');", min_id, argv[k]);
+        long new_id = max_id + 1;
+        snprintf(query, sizeof(query), "INSERT INTO tasks (id, description) VALUES (%ld, '%s');", new_id, db->tasks[k]);
         res = PQexec(conn, query);
         if (PQresultStatus(res) != PGRES_COMMAND_OK) {
             fprintf(stderr, "Insertion of task failed: %s\n", PQerrorMessage(conn));
@@ -55,14 +51,14 @@ void add_tasks(database_t *db, int argc, const char **argv) {
             PQfinish(conn);
             exit(EXIT_FAILURE);
         }
-        printf("Adding of item '%s' successful\n", *(argv + k));
+        printf("Adding of item '%s' successful\n", db->tasks[k]);
         PQclear(res);
     }
 
     PQfinish(conn);
 }
 
-void delete_tasks(database_t *db, int argc, const char **argv) {
+void delete_tasks(database_t *db) {
     char query[BUFSIZ];
     long id_to_delete;
     PGresult *res;
@@ -73,8 +69,12 @@ void delete_tasks(database_t *db, int argc, const char **argv) {
         exit(EXIT_FAILURE);
     }
 
-    for (int i = 2; i < argc; i++) {
-        long id = strtol(argv[i], NULL, 0);
+    for (int i = 2; i < db->no_tasks; i++) {
+        long id = strtol(db->tasks[i], NULL, 0);
+        if (errno == ERANGE) {
+            perror("strtol");
+            exit(EXIT_FAILURE);
+        }
         snprintf(query, sizeof(query), "SELECT MIN(id) FROM tasks WHERE id >= %ld;", id);
 
         res = PQexec(conn, query);
@@ -91,6 +91,10 @@ void delete_tasks(database_t *db, int argc, const char **argv) {
         }
 
         id_to_delete = strtol(PQgetvalue(res, 0, 0), NULL, 0);
+        if (errno == ERANGE) {
+            perror("strtol");
+            exit(EXIT_FAILURE);
+        }
         PQclear(res);
 
         snprintf(query, sizeof(query), "DELETE FROM tasks WHERE id = %ld;", id_to_delete);
@@ -100,7 +104,7 @@ void delete_tasks(database_t *db, int argc, const char **argv) {
             PQclear(res);
             continue;
         }
-        printf("Deletion of item %ld successful\n", id_to_delete);
+        printf("Deletion of item %s successful\n", db->tasks[i]);
         PQclear(res);
     }
 

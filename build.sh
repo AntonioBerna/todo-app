@@ -2,7 +2,7 @@
 
 set -xe
 
-dir="cmake-build-debug/"
+dir="debug/"
 target="todo"
 
 if [ -d "$dir" ]; then
