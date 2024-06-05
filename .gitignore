@@ -54,6 +54,5 @@ dkms.conf
 # Others
 .vscode/
 .DS_Store
-icons/
 build
 setenv.sh
