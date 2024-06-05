@@ -51,7 +51,7 @@ void add_tasks(database_t *db) {
             PQfinish(conn);
             exit(EXIT_FAILURE);
         }
-        printf("Adding of item '%s' successful\n", db->tasks[k]);
+        printf("Adding of item \"%s\" successful\n", db->tasks[k]);
         PQclear(res);
     }
 
@@ -108,16 +108,6 @@ void remove_tasks(database_t *db) {
         PQclear(res);
     }
 
-    snprintf(query, sizeof(query), "UPDATE tasks SET id = id - 1 WHERE id > %ld;", id_to_delete);
-    res = PQexec(conn, query);
-    if (PQresultStatus(res) != PGRES_COMMAND_OK) {
-        fprintf(stderr, "Update of task IDs failed: %s\n", PQerrorMessage(conn));
-        PQclear(res);
-        PQfinish(conn);
-        exit(EXIT_FAILURE);
-    }
-    PQclear(res);
-
     PQfinish(conn);
 }
 
@@ -143,7 +133,8 @@ void print_tasks(database_t *db) {
         printf("Todo list:\n");
         for (int i = 0; i < rows; i++) {
             char *description = PQgetvalue(res, i, 1);
-            printf("(%d) %s\n", i + 1, description);
+            char *id = PQgetvalue(res, i, 0);
+            printf("(%s) %s\n", id, description);
         }
     }
     PQclear(res);

@@ -52,10 +52,8 @@ Mkfile.old
 dkms.conf
 
 # Others
-.idea/
 .vscode/
 .DS_Store
-todo
 icons/
-cmake-build-debug/
-debug/
+build
+setenv.sh
