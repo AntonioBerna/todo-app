@@ -1,10 +1,10 @@
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b48b5e6f59c2480ca44b13dc35da8f1e)](https://www.codacy.com/gh/AntonioBerna/todo-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AntonioBerna/todo-app&amp;utm_campaign=Badge_Grade)
-
-# mini docs
-
 <p align="center">
     <img src="icons/icon.ico">
 </p>
+
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/b48b5e6f59c2480ca44b13dc35da8f1e)](https://www.codacy.com/gh/AntonioBerna/todo-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AntonioBerna/todo-app&amp;utm_campaign=Badge_Grade)
+
+# mini docs
 
 ## How to install PostgreSQL
 
@@ -131,9 +131,10 @@ SELECT setting FROM pg_settings WHERE name = 'port';
 > [!IMPORTANT]
 > To use the previous command you need to log back into `psql` and then use the `sudo -i -u postgres` command and then the `psql` command.
 
-once the `setenv.sh` file is completed you can use the following command:
+once the `setenv.sh` file is completed you can use the following commands:
 
 ```shell
+chmod +x setenv.sh
 source setenv.sh
 ```
 
