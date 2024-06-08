@@ -76,7 +76,7 @@ CREATE TABLE tasks (
 
 compact this code as follows:
 
-```shell
+```sql
 CREATE TABLE tasks (id SERIAL PRIMARY KEY, description TEXT NOT NULL);
 ```
 
