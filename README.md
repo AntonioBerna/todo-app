@@ -122,7 +122,7 @@ export PORT= # please complete this
 echo "Set environment variables for DATABASE, USERNAME, PASSWORD, and PORT."
 ```
 
-in particular the `password` should be the login password of your computer, while to find out which connection `port` is you can use the following command:
+in particular the `PASSWORD` should be the login password of your computer, while to find out which connection `PORT` is you can use the following command:
 
 ```sql
 SELECT setting FROM pg_settings WHERE name = 'port';
