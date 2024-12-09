@@ -27,12 +27,9 @@ sudo pacman -S postgresql
 
 to install it, but if you are on other `Linux` distributions just change the `Package Manager`. Instead, if you are on `macOS` or `Windows`, go to the official `PostgreSQL` website.
 
-> [!NOTE]
-> If you have never used `PostgreSQL` on `Linux` I suggest you follow [this guide](https://wiki.archlinux.org/title/PostgreSQL).
+**Note:** If you have never used `PostgreSQL` on `Linux` I suggest you follow [this guide](https://wiki.archlinux.org/title/PostgreSQL).
 
-
-> [!WARNING]
-> If you use `macOS` or `Windows` you must modify the `Makefile` file to adapt it to your operating system.
+**Warning:** If you use `macOS` or `Windows` you must modify the `Makefile` file to adapt it to your operating system.
 
 After the installation of `PostgreSQL` you need to use the following commands:
 
@@ -198,8 +195,7 @@ Adding of item "homework" successful
 Adding of item "go to the toilet" successful
 ```
 
-> [!NOTE]
-> Double quotes `" "` are optional for single words like coffee, chocolate, tea, ...
+**Note:** Double quotes `" "` are optional for single words like coffee, chocolate, tea, ...
 
 ## Print tasks
 
