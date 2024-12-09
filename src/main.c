@@ -16,7 +16,7 @@ int main(int argc, const char **argv) {
     const char *port = getenv("PORT");
 
     if (!database || !username || !password || !port) {
-        fprintf(stderr, "Environment variables not set\n");
+        fprintf(stderr, "Environment variables not set.\n");
         exit(EXIT_FAILURE);
     }
 
