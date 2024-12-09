@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Sudoku Solver using bitmasking and backtracking in C"
+title: "To Do List Tool With PostgreSQL Database in C"
 author_profile: true
 toc: true
 toc_sticky: true
@@ -28,8 +28,10 @@ sudo pacman -S postgresql
 to install it, but if you are on other `Linux` distributions just change the `Package Manager`. Instead, if you are on `macOS` or `Windows`, go to the official `PostgreSQL` website.
 
 **Note:** If you have never used `PostgreSQL` on `Linux` I suggest you follow [this guide](https://wiki.archlinux.org/title/PostgreSQL).
+{: .notice--info}
 
 **Warning:** If you use `macOS` or `Windows` you must modify the `Makefile` file to adapt it to your operating system.
+{: .notice--warning}
 
 After the installation of `PostgreSQL` you need to use the following commands:
 
@@ -196,6 +198,7 @@ Adding of item "go to the toilet" successful
 ```
 
 **Note:** Double quotes `" "` are optional for single words like coffee, chocolate, tea, ...
+{: .notice--info}
 
 ## Print tasks
 
