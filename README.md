@@ -3,6 +3,9 @@
 </p>
 
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/b48b5e6f59c2480ca44b13dc35da8f1e)](https://www.codacy.com/gh/AntonioBerna/todo-app/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AntonioBerna/todo-app&amp;utm_campaign=Badge_Grade)
+![GitHub License](https://img.shields.io/github/license/AntonioBerna/todo-app)
+![Website](https://img.shields.io/website?url=https%3A%2F%2Fantonioberna.github.io%2Ftodo-app%2F)
+![GitHub Created At](https://img.shields.io/github/created-at/antonioberna/todo-app)
 
 # mini docs
 
@@ -10,7 +13,7 @@
 
 If you are on `Arch Linux` you can use the following command:
 
-```shell
+```bash
 sudo pacman -S postgresql
 ```
 
@@ -21,31 +24,39 @@ to install it, but if you are on other `Linux` distributions just change the `Pa
 
 
 > [!WARNING]
-> If you use `macOS` or `Windows` you must modify the `CMakeLists.txt` file to adapt it to your operating system.
+> If you use `macOS` or `Windows` you must modify the `Makefile` file to adapt it to your operating system.
+
+After the installation of `PostgreSQL` you need to use the following commands:
+
+```
+sudo -u postgres initdb -D /var/lib/postgres/data
+sudo mkdir -p /var/lib/postgres/data
+sudo chown postgres:postgres /var/lib/postgres/data
+```
 
 ## How to create a database
 
 Once you have downloaded `PostgreSQL` you need to create the `todolist` database. Open a terminal and write:
 
-```shell
+```bash
 sudo -i -u postgres
 ```
 
 this command allows you to change your computer user by selecting the `postgres` user. Now use the following command to create a database called `todolist`:
 
-```shell
+```bash
 createdb todolist
 ```
 
 Now run the command:
 
-```shell
+```bash
 psql
 ```
 
 you will get something like this:
 
-```shell
+```bash
 psql (16.2)
 Type "help" for help.
 
@@ -54,12 +65,12 @@ postgres=#
 
 then write:
 
-```shell
+```bash
 \c todolist
 ```
 you should get a message similar to this:
 
-```shell
+```bash
 You are now connected to database "todolist" as user "postgres".
 ```
 
@@ -82,7 +93,7 @@ CREATE TABLE tasks (id SERIAL PRIMARY KEY, description TEXT NOT NULL);
 
 and write it immediately after `todolist=#` and you should get this message:
 
-```shell
+```bash
 CREATE TABLE
 ```
 
@@ -94,7 +105,7 @@ SELECT * FROM tasks;
 
 and in particular you should get something similar to this:
 
-```shell
+```bash
 id | description 
 ----+-------------
 (0 rows)
@@ -106,14 +117,14 @@ Now that you have successfully created the `todolist` database and created a `ta
 
 If you have performed the previous steps without problems you are ready to use my project. Then clone the repository to your computer using the following command:
 
-```shell
+```bash
 git clone https://github.com/AntonioBerna/todo-app.git
 ```
 
-For personal security reasons, it is good practice to save your access credentials in the system's `environment variables`. Then using the `touch` command we create a `setenv.sh` file which must contain the following code:
+For personal security reasons, it is good practice to save your access credentials in the system's environment variables. Then using the `touch` command we create a `setenv.sh` file which must contain the following code:
 
-```shell
-#!/bin/sh
+```bash
+#!/bin/bash
 
 export DATABASE=todolist
 export USERNAME=postgres
@@ -133,28 +144,35 @@ SELECT setting FROM pg_settings WHERE name = 'port';
 
 once the `setenv.sh` file is completed you can use the following commands:
 
-```shell
-chmod +x setenv.sh
+```
+chmod 700 setenv.sh
 source setenv.sh
 ```
 
-to apply those `environment variables` to the shell currently in use.
+to apply those environment variables to the shell currently in use.
 
-Once you have set the `environment variables` you will need to compile the program. Then you can use the following command:
+Once you have set the environment variables you will need to compile the program. Then you can use the following command:
 
-```shell
-cmake . -B build
 ```
-finally using the `cd build` command and the `make` command will generate the final executable. To test the program we can use the following command:
+make
+```
+
+To test the program we can use the following command:
 
 ```shell
-./todo
+./bin/todo
 ```
 
 so as to obtain:
 
 ```shell
-Usage: ./todo [add|rm|ls] [description|id]
+Usage: ./bin/todo [add|rm|ls] [description|id]
+```
+
+To remove the program from your computer you can use the following command:
+
+```bash
+make clean
 ```
 
 ## Add tasks
@@ -162,7 +180,7 @@ Usage: ./todo [add|rm|ls] [description|id]
 Input:
 
 ```
-./todo add homework "go to the toilet"
+./bin/todo add homework "go to the toilet"
 ```
 
 Output:
@@ -180,15 +198,15 @@ Adding of item "go to the toilet" successful
 Input:
 
 ```
-./todo ls
+./bin/todo ls
 ```
 
 Output:
 
 ```
 Todo list:
-(0) homework
-(1) go to the toilet
+(1) homework
+(2) go to the toilet
 ```
 
 ## Delete tasks
@@ -196,12 +214,12 @@ Todo list:
 Input:
 
 ```
-./todo rm 0 1
+./bin/todo rm 1 2
 ```
 
 Output:
 
 ```
-Deletion of item 0 successful
 Deletion of item 1 successful
+Deletion of item 2 successful
 ```
