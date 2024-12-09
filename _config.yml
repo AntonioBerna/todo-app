@@ -1,1 +1,46 @@
-theme: jekyll-theme-cayman
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: "dark"
+
+title: "todo-app"
+description: "To Do List Tool With PostgreSQL Database in C"
+url: "https://antonioberna.github.io"
+baseurl: "/todo-app"
+repository: "AntonioBerna/todo-app"
+author:
+  name: "Antonio Bernardini"
+  avatar: "/assets/imgs/me.jpg"
+  bio: "Engineers Student, Electronics Hobbyist and Aspirant Embedded Systems Engineer"
+  location: "Rome, Italy"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto: antobioberna@live.com"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/AntonioBerna"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/antonioberna"
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube"
+      url: "https://www.youtube.com/c/CleverCode"
+
+footer:
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto: antobioberna@live.com"
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/AntonioBerna"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://www.linkedin.com/in/antonioberna"
+    - label: "YouTube"
+      icon: "fab fa-fw fa-youtube"
+      url: "https://www.youtube.com/c/CleverCode"
+
+plugins:
+  - jekyll-paginate
+  - jemoji
+  - jekyll-include-cache
