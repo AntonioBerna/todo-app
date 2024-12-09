@@ -182,7 +182,7 @@ To remove the program from your computer you can use the following command:
 make clean
 ```
 
-## Add tasks
+### Add tasks
 
 Input:
 
@@ -200,7 +200,7 @@ Adding of item "go to the toilet" successful
 **Note:** Double quotes `" "` are optional for single words like coffee, chocolate, tea, ...
 {: .notice--info}
 
-## Print tasks
+### Print tasks
 
 Input:
 
@@ -216,7 +216,7 @@ Todo list:
 (2) go to the toilet
 ```
 
-## Delete tasks
+### Delete tasks
 
 Input:
 
