@@ -41,6 +41,18 @@ sudo mkdir -p /var/lib/postgres/data
 sudo chown postgres:postgres /var/lib/postgres/data
 ```
 
+to initialize the database and create the necessary directories. Then you can use the following command to start the `PostgreSQL` service:
+
+```bash
+sudo systemctl start postgresql
+```
+
+and to enable it at startup use the following command:
+
+```bash
+sudo systemctl enable postgresql
+```
+
 ## How to create a database
 
 Once you have downloaded `PostgreSQL` you need to create the `todolist` database. Open a terminal and write:
@@ -146,8 +158,9 @@ in particular the `PASSWORD` should be the login password of your computer, whil
 SELECT setting FROM pg_settings WHERE name = 'port';
 ```
 
-> [!IMPORTANT]
-> To use the previous command you need to log back into `psql` and then use the `sudo -i -u postgres` command and then the `psql` command.
+
+**Warning:** To use the previous command you need to log back into `psql` and then use the `sudo -i -u postgres` command and then the `psql` command.
+{: .notice--warning}
 
 once the `setenv.sh` file is completed you can use the following commands:
 
@@ -197,7 +210,7 @@ Adding of item "homework" successful
 Adding of item "go to the toilet" successful
 ```
 
-**Note:** Double quotes `" "` are optional for single words like coffee, chocolate, tea, ...
+**Note:** Double quotes `" "` are optional for single words like coffee, chocolate, tea, homework, and so on.
 {: .notice--info}
 
 ### Print tasks
