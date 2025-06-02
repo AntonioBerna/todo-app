@@ -1,12 +1,12 @@
 # Project Information
 site_name: todo-app
-site_url: #
+site_url: https://github.com/AntonioBerna/todo-app
 site_author: Antonio Bernardini
 site_description: #
 
 # Repository
-repo_name: # AntonioBerna/ethical-hacking
-repo_url: # https://github.com/AntonioBerna/ethical-hacking
+repo_name: AntonioBerna/todo-app
+repo_url: https://github.com/AntonioBerna/todo-app
 
 # Copyright
 copyright: Copyright &copy; 2025 Antonio Bernardini
