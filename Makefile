@@ -17,10 +17,10 @@ SRCS=src/main.c src/psql.c
 TARGET=todo
 
 all: $(SRCS)
-	@mkdir -p bin
-	$(CC) $(CFLAGS) $(INCLUDES) $^ $(LIBS) -o bin/$(TARGET)
+	@mkdir -p build
+	$(CC) $(CFLAGS) $(INCLUDES) $^ $(LIBS) -o build/$(TARGET)
 
 .PHONY: clean
 
 clean:
-	$(RM) -r bin/
+	$(RM) -r build/
