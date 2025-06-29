@@ -2,21 +2,38 @@
 
 ## How to install PostgreSQL
 
+### Linux
+
 If you are on `Arch Linux` you can use the following command:
 
 ```bash
 sudo pacman -S postgresql
 ```
 
-to install it, but if you are on other `Linux` distributions just change the `Package Manager`. Instead, if you are on `macOS` or `Windows`, go to the official `PostgreSQL` website.
+to install it, but if you are on other `Linux` distributions just change the **Package Manager**.
 
 !!! Note
-    If you have never used `PostgreSQL` on `Linux` I suggest you follow [this guide](https://wiki.archlinux.org/title/PostgreSQL).
+    If you have never used PostgreSQL on `Linux` I suggest you follow [this guide](https://wiki.archlinux.org/title/PostgreSQL).
 
-!!! Warning
-    If you use `macOS` or `Windows` you must modify the `Makefile` file to adapt it to your operating system.
+### macOS
 
-After the installation of `PostgreSQL` you need to use the following commands:
+If you are on `macOS` you can use `Homebrew` to install PostgreSQL with the following command:
+
+```bash
+brew install postgresql
+```
+
+or you can use `MacPorts` with the following command:
+
+```bash
+sudo port install postgresql16
+```
+
+## Configure PostgreSQL
+
+### Linux
+
+After the installation of PostgreSQL you need to use the following commands:
 
 ```bash
 sudo -u postgres initdb -D /var/lib/postgres/data
@@ -24,7 +41,8 @@ sudo mkdir -p /var/lib/postgres/data
 sudo chown postgres:postgres /var/lib/postgres/data
 ```
 
-to initialize the database and create the necessary directories. Then you can use the following command to start the `PostgreSQL` service:
+to initialize the database and create the necessary directories.
+Then you can use the following command to start the PostgreSQL service:
 
 ```bash
 sudo systemctl start postgresql
@@ -38,13 +56,15 @@ sudo systemctl enable postgresql
 
 ## How to create a database
 
-Once you have downloaded `PostgreSQL` you need to create the `todolist` database. Open a terminal and write:
+Once you have downloaded PostgreSQL you need to create the `todolist` database.
+Open a terminal and write:
 
 ```bash
 sudo -i -u postgres
 ```
 
-this command allows you to change your computer user by selecting the `postgres` user. Now use the following command to create a database called `todolist`:
+this command allows you to change your computer user by selecting the `postgres` user.
+Now use the following command to create a database called `todolist`:
 
 ```bash
 createdb todolist
@@ -53,7 +73,11 @@ createdb todolist
 Now run the command:
 
 ```bash
+# Linux
 psql
+
+# macOS
+psql postgres
 ```
 
 you will get something like this:
@@ -70,6 +94,7 @@ then write:
 ```bash
 \c todolist
 ```
+
 you should get a message similar to this:
 
 ```bash

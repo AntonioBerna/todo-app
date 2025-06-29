@@ -13,11 +13,11 @@ For personal security reasons, it is good practice to save your access credentia
 ```bash linenums="1"
 #!/bin/bash
 
-export DATABASE=todolist
-export USERNAME=postgres
+export DB_NAME=todolist
+export USERNAME= # please complete this
 export PASSWORD= # please complete this
 export PORT= # please complete this
-echo "Set environment variables for DATABASE, USERNAME, PASSWORD, and PORT."
+echo "Set environment variables for DB_NAME, USERNAME, PASSWORD, and PORT."
 ```
 
 in particular the `PASSWORD` should be the login password of your computer, while to find out which connection `PORT` is you can use the following command:
@@ -25,6 +25,8 @@ in particular the `PASSWORD` should be the login password of your computer, whil
 ```sql
 SELECT setting FROM pg_settings WHERE name = 'port';
 ```
+
+Finally, the `USERNAME` represent the owner of the database, which is usually `postgres` if you have not changed it during the installation of PostgreSQL.
 
 !!! Warning
     To use the previous command you need to log back into `psql` and then use the `sudo -i -u postgres` command and then the `psql` command.
@@ -47,13 +49,13 @@ make
 To test the program we can use the following command:
 
 ```shell
-./bin/todo
+./build/todo
 ```
 
 so as to obtain:
 
 ```shell
-Usage: ./bin/todo [add|rm|ls] [description|id]
+Usage: ./build/todo [add|rm|edit|ls] [description|id]
 ```
 
 To remove the program from your computer you can use the following command:
@@ -67,7 +69,7 @@ make clean
 Input:
 
 ```
-./bin/todo add homework "go to the toilet"
+./build/todo add homework "go to the toilet"
 ```
 
 Output:
@@ -85,7 +87,7 @@ Adding of item "go to the toilet" successful
 Input:
 
 ```
-./bin/todo ls
+./build/todo ls
 ```
 
 Output:
@@ -101,7 +103,7 @@ Todo list:
 Input:
 
 ```
-./bin/todo rm 1 2
+./build/todo rm 1 2
 ```
 
 Output:
@@ -109,4 +111,18 @@ Output:
 ```
 Deletion of item 1 successful
 Deletion of item 2 successful
+```
+
+### Edit tasks
+
+Input:
+
+```
+./build/todo edit 1 "go to the bathroom"
+```
+
+Output:
+
+```
+Update of item 1 successful
 ```
