@@ -1,0 +1,57 @@
+# ================================
+# Language and Base Style Settings
+# ================================
+Language:        C
+BasedOnStyle:    LLVM
+
+# ================================
+# Indentation and Tabs
+# ================================
+IndentWidth:     4        # Indent size in spaces
+TabWidth:        4        # Width of tab character
+UseTab:          Never    # Use spaces instead of tabs
+
+# ================================
+# Line Length and Wrapping
+# ================================
+ColumnLimit:     150      # Maximum allowed line length
+
+# ================================
+# Brace Wrapping Style
+# ================================
+BreakBeforeBraces: Attach  # Put opening braces on the same line
+
+# ================================
+# Short Statements Handling
+# ================================
+AllowShortIfStatementsOnASingleLine: true
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLoopsOnASingleLine: true
+AllowShortCaseLabelsOnASingleLine: true
+
+# ================================
+# Comment Formatting
+# ================================
+SpacesBeforeTrailingComments: 1
+AlignTrailingComments: true
+BreakBeforeComments: true
+ReflowComments: false          # Avoid reformatting comment text
+
+# ================================
+# Spacing Rules
+# ================================
+SpaceBeforeParens: ControlStatements  # Space before parens in if, for, while, etc.
+
+# ================================
+# Alignment and Sorting
+# ================================
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+SortIncludes: false          # Disable automatic sorting of includes
+
+# ================================
+# Function and Constructor Formatting
+# ================================
+AllowAllConstructorInitializersOnNextLine: false
+BinPackArguments: false     # Do not pack multiple function arguments on the same line
+BinPackParameters: false    # Do not pack multiple function parameters on the same line

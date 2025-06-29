@@ -1,26 +1,26 @@
-CC=gcc
-CFLAGS=-Wall -Wextra -Werror -Wpedantic
+CC=clang
+CFLAGS=-Wall -Wextra -Werror -pedantic -g
 LDFLAGS= 
-INCLUDES=-Iinclude
+INCLUDES=-Icore
 LIBS=
 
-ifeq ($(shell uname), Linux)
-    PG_INCLUDE=$(shell pg_config --includedir)
-    PG_LIB=$(shell pg_config --libdir)
-    LIBS+=-L$(PG_LIB) -lpq
-    INCLUDES+=-I$(PG_INCLUDE)
+UNAME_S := $(shell uname)
+
+ifneq (,$(filter $(UNAME_S), Linux Darwin))
+    PG_INCLUDE := $(shell pg_config --includedir)
+    PG_LIB := $(shell pg_config --libdir)
+    LIBS += -L$(PG_LIB) -lpq
+    INCLUDES += -I$(PG_INCLUDE)
 else
-    $(error Operating system not supported yet.)
+    $(error OS $(UNAME_S) not supported)
 endif
 
-SRCS=src/main.c src/psql.c
+SRCS=src/main.c core/psql.c
 TARGET=todo
 
 all: $(SRCS)
 	@mkdir -p build
-	$(CC) $(CFLAGS) $(INCLUDES) $^ $(LIBS) -o build/$(TARGET)
-
-.PHONY: clean
+	$(CC) $(CFLAGS) $(INCLUDES) $^$(LIBS) -o build/$(TARGET)
 
 clean:
 	$(RM) -r build/
